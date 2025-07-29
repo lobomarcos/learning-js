@@ -1,30 +1,49 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+<h1>App Clima</h1>
+
+  <div class="lista">
+    <div class="card" v-for="cidade in cidades" :key="cidade.id">
+      <div class="card-img"></div>
+      <h3>{{ cidade.name }}</h3>
+      <h4>{{ cidade.description }}</h4>
+      <div class="temperatura">{{ cidade.temp }}º</div>
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script>
+import './assets/estilo.css/'
+export default {
+ data() {
+    return {
+      cidades: [
+        {
+          id: 8429,
+          name: "Rio de Janeiro",
+          description: "Ensolarado",
+          icon: "01d",
+          temp: "25",
+        },
+        {
+          id: 8412,
+          name: "Manaus",
+          description: "Chuvas Fortes",
+          icon: "09d",
+          temp: "25",
+        },
+        {
+          id: 8454,
+          name: "Brasília",
+          description: "Ensolarado",
+          icon: "10d",
+          temp: "27.4",
+        },
+      ],
+    };
+  },
+}
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
